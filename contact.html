@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - BocchiMania</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="dark-mode.js" defer></script>
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="BocchiManiaLogo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Producten</a></li>
+                <li><a href="info.html">Informatie</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <button id="dark-mode-toggle">Donker</button>
+    </header>
+    <main>
+        <h1>Contacteer Ons</h1>
+        <section class="contact-form">
+            <form action="submit_contact.php" method="POST">
+                <label for="name">Naam:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Bericht:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit" class="btn-primary">Verzend</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 BocchiMania. Alle rechten voorbehouden.</p>
+    </footer>
+</body>
+</html>
