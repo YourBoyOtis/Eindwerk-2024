@@ -2,8 +2,9 @@
 include 'connection.php';
 include 'sessionCheckUser.php';
 
-if(isset($klantID)) {
-    $sql = "SELECT * FROM tblWinkelmandje WHERE klantID = '$klantID'";
+if(isset($_POST["klantID"])) {
+    $klantID = $_POST["klantID"];
+    $sql = "SELECT * FROM winkelmandje WHERE gebruikersID = '$klantID'";
     $result = $conn->query($sql);
 
     while($row = $result->fetch_assoc()) {
@@ -11,10 +12,20 @@ if(isset($klantID)) {
         $aantal = $row['aantal'];
         date_default_timezone_set("Europe/Brussels");
         $datum = date("Y-m-d");
-        $sqlInsert = "INSERT INTO tblbestellingen (bestelID, datum, klantID, productID, aantal) VALUES (NULL, '$datum', '$klantID', '$productid', '$aantal')";
+
+
+
+        $result = $conn->query("SELECT MAX(bestellingID) AS nextID FROM bestellingen");
+        $row = $result->fetch_assoc();
+        $nextID = $row['nextID'] + 1;
+
+
+
+
+        $sqlInsert = "INSERT INTO bestellingen (bestellingID, datum, gebruikersID, productID, aantal) VALUES ('$nextID', '$datum', '$klantID', '$productid', '$aantal')";
 
         if ($conn->query($sqlInsert) === TRUE) {
-            $sqlDel = "DELETE FROM tblWinkelmandje WHERE klantID = '$klantID'";
+            $sqlDel = "DELETE FROM winkelmandje WHERE gebruikersID = '$klantID'";
             if ($conn->query($sqlDel) === TRUE) {
                 header('Location: winkelmandje.php?melding=Bedankt voor uw aankoop');
             }
@@ -28,4 +39,3 @@ if(isset($klantID)) {
 
 $conn->close();
 ?>
-

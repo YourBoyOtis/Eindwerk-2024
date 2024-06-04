@@ -1,4 +1,4 @@
-
+/* General reset and base styles */
 *,
 *::before,
 *::after {
@@ -10,8 +10,8 @@
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: 1.6;
-    background-color: #f5f5f5;
-    color: #333;
+    background-color: var(--background-color);
+    color: var(--text-color);
     margin: 0;
     padding: 0;
     font-size: 16px;
@@ -24,19 +24,18 @@ img {
 }
 
 a {
-    color: #007BFF;
+    color: var(--link-color);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #0056b3;
+    color: var(--link-hover-color);
 }
 
-
 header {
-    background-color: #fff;
-    color: #333;
+    background-color: var(--header-background);
+    color: var(--text-color);
     padding: 1rem;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     display: flex;
@@ -56,23 +55,19 @@ nav ul {
 nav ul li {
     margin-left: 20px;
 }
-nav ul:last-child{
-margin-left: 0;
-}
 
 nav ul li a {
-    color: #333;
+    color: var(--text-color);
     font-weight: 500;
     font-size: 1rem;
 }
-
 
 main {
     padding: 20px;
 }
 
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/il_570xN.3789199216_d72z.png') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/hero-bg.jpg') no-repeat center center/cover;
     color: #fff;
     text-align: center;
     padding: 60px 20px;
@@ -100,13 +95,11 @@ main {
     background-color: #0056b3;
 }
 
-
 .product-category {
     margin-bottom: 40px;
     padding-left: auto;
     width: 100%;
 }
-
 
 .category-list {
     display: flex;
@@ -116,16 +109,11 @@ main {
     margin: 0;
 }
 
-
-
-
-
 .category-list a {
     display: block;
     padding: 10px 20px;
     text-decoration: none;
 }
-
 
 .product-category h2 {
     margin-bottom: 20px;
@@ -151,7 +139,7 @@ main {
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    background-color: #fff;
+    background-color: var(--background-color);
     padding: 10px;
     text-align: center;
     display: flex;
@@ -159,12 +147,11 @@ main {
     justify-content: space-between; 
 }
 
-
 footer {
     text-align: center;
     padding: 1rem;
-    background-color: #333;
-    color: white;
+    background-color: var(--footer-background);
+    color: var(--footer-text-color);
 }
 
 @media (max-width: 768px) {
@@ -185,6 +172,7 @@ footer {
         min-width: 0; 
     }
 }
+
 html {
     height: 100%;
 }
@@ -206,6 +194,7 @@ footer {
     text-align: center;
     padding: 20px 0;
 }
+
 .product-purchase {
     display: flex;
     justify-content: center;
@@ -264,9 +253,6 @@ form button {
         width: 100%;
     }
 }
-main {
-    padding: 20px;
-}
 
 main h1 {
     margin-bottom: 20px;
@@ -289,7 +275,7 @@ section img {
     border-radius: 8px;
 }
 
-/* Base styles voor light mode */
+/* Base styles for light mode */
 :root {
     --background-color: #fff;
     --text-color: #333;
@@ -301,9 +287,10 @@ section img {
     --form-background: #f0f0f0;
     --input-background: #fff;
     --input-border-color: #ccc;
+    --logo: url('images/LogoLight.jpg');
 }
 
-/* Base styles voor dark mode */
+/* Base styles for dark mode */
 [data-theme="dark"] {
     --background-color: #121212;
     --text-color: #ccc;
@@ -315,29 +302,11 @@ section img {
     --form-background: #333;
     --input-background: #222;
     --input-border-color: #444;
+    --logo: url('images/LogoDark.png');
 }
 
-body {
-    background-color: var(--background-color);
-    color: var(--text-color);
-}
-
-header {
-    background-color: var(--header-background);
-}
-
-footer {
-    background-color: var(--footer-background);
-    color: var(--footer-text-color);
-}
-
-nav ul li a {
-    color: var(--link-color);
-    transition: color 0.3s ease;
-}
-
-nav ul li a:hover {
-    color: var(--link-hover-color);
+#logo{
+    content:var(--logo);
 }
 
 input, textarea {
@@ -350,21 +319,348 @@ form {
     background-color: var(--form-background);
     border-radius: 8px;
 }
-.product-pagina{
-    background-color: var(--background-color);
 
+/* Additional styles for winkelmandje, product and register forms */
+
+.winkelmandje-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
 }
-.WinkelmandDiv{
-    flex: 0 0 auto;
-    width: 250px; 
-    min-width: 250px; 
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    background-color: #fff;
+
+.product-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.product-image {
+    width: 100px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.product-details {
+    flex-grow: 1;
+}
+
+.product-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product-price {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.product-quantity {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.delete-button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #dc3545;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+.purchase-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.purchase-button:hover {
+    background-color: #0056b3;
+}
+
+.product-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.product-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.product-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.buy-button {
+    display: block;
+    width: 100%;
     padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
     text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.buy-button:hover {
+    background-color: #0056b3;
+}
+
+.register-form {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.register-form input[type="text"],
+.register-form input[type="password"] {
+    width: calc(100% - 20px);
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.register-form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+}
+/* Styles for buy.php page */
+.product-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: var(--background-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+    width: 300px; /* Adjust the width as needed */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-details {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; 
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.product-name {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.product-price {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.product-brand {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.buy-button {
+    display: block;
+    width: fit-content;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.buy-button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .product-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .product-image {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+/* Styles for winkelmandje.php page */
+.winkelmandje-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--form-background);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.winkelmandje-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.btn-primary {
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.winkelmandje-items h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.product-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: var(--background-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+    max-width: 200px;
+    max-height: 200px;
+    margin-right: 20px;
+    border-radius: 8px;
+    
+}
+
+.product-details {
+    flex-grow: 1;
+}
+
+.product-name,
+.product-price,
+.product-quantity {
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.delete-button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #dc3545;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+.total-price {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-top: 20px;
+}
+
+.purchase-button {
+    display: block;
+    width: fit-content;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#dark-mode-toggle{
+    display: block;
+    width: fit-content;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.purchase-button:hover {
+    background-color: #0056b3;
+}
+
+.empty-cart-message,
+.login-message {
+    font-size: 1.25rem;
+    color: var(--text-color);
+    margin-top: 20px;
 }

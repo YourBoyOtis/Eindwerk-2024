@@ -17,18 +17,19 @@ include 'connection.php';
     <section id="electric-guitars" class="product-list">
         <h2>Elektrische Gitaren</h2>
         <?php
-        $sql = "SELECT * FROM producten WHERE type IN ('elektrisch', 'akoestisch', 'klassiek', 'bass') ORDER BY type";
-        
+        $sql = "SELECT * FROM producten WHERE type IN ('elektrisch', 'akoestisch', 'bass', 'accessoire') ORDER BY type";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
+                if ($row["type"] == "elektrisch") {
                 echo '<div class="product-item">';
                 echo '<img src="images/' . $row["image"] . '" alt="' . $row["naam"] . '">';
                 echo '<h3>' . $row["naam"] . '</h3>';
                 echo '<p>€' . $row["prijs"] . '</p>';
                 echo '<a href="buy.php?id=' . $row["productID"] . '" class="btn-primary">Koop Nu</a>';
                 echo '</div>';
+                }
             }
         } else {
             echo "Geen producten gevonden.";
@@ -46,7 +47,7 @@ include 'connection.php';
                     echo '<img src="images/' . $row["image"] . '" alt="' . $row["naam"] . '">';
                     echo '<h3>' . $row["naam"] . '</h3>';
                     echo '<p>€' . $row["prijs"] . '</p>';
-                    echo '<a href="buy.php?id=' . $row["ID"] . '" class="btn-primary">Koop Nu</a>';
+                    echo '<a href="buy.php?id=' . $row["productID"] . '" class="btn-primary">Koop Nu</a>';
                     echo '</div>';
                 }
             }
@@ -66,7 +67,7 @@ include 'connection.php';
                     echo '<img src="images/' . $row["image"] . '" alt="' . $row["naam"] . '">';
                     echo '<h3>' . $row["naam"] . '</h3>';
                     echo '<p>€' . $row["prijs"] . '</p>';
-                    echo '<a href="buy.php?id=' . $row["ID"] . '" class="btn-primary">Koop Nu</a>';
+                    echo '<a href="buy.php?id=' . $row["productID"] . '" class="btn-primary">Koop Nu</a>';
                     echo '</div>';
                 }
             }
@@ -81,12 +82,12 @@ include 'connection.php';
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                if ($row["type"] == "accessoires") {
+                if ($row["type"] == "accessoire") {
                     echo '<div class="product-item">';
                     echo '<img src="images/' . $row["image"] . '" alt="' . $row["naam"] . '">';
                     echo '<h3>' . $row["naam"] . '</h3>';
                     echo '<p>€' . $row["prijs"] . '</p>';
-                    echo '<a href="buy.php?id=' . $row["ID"] . '" class="btn-primary">Koop Nu</a>';
+                    echo '<a href="buy.php?id=' . $row["productID"] . '" class="btn-primary">Koop Nu</a>';
                     echo '</div>';
                 }
             }

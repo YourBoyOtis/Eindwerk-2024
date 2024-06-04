@@ -9,3 +9,4 @@ if ((isset($_SESSION["user"])) AND (isset($_SESSION["gebruikersID"])))
     $klantID = "";
 }
 ?>
+
